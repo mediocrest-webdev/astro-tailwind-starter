@@ -1,0 +1,95 @@
+---
+import Button from "./Button.astro";
+
+const navLinks = [
+  { href: '#', label: 'Home' },
+  { href: '#services', label: 'Services' },
+  { href: '#features', label: 'Features' },
+  { href: '#gallery', label: 'Gallery' },
+  { href: '#testimonials', label: 'Testimonials' },
+  { href: '#contact', label: 'Contact Us' },
+];
+---
+<!-- Navbar Start -->
+<header class='sticky top-0 z-10 container max-w-screen-xl p-4 mx-auto'>
+  <nav class="flex items-center justify-between gap-2">
+    <a href="/" class=''>
+      Your Brand Name
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class='hidden md:flex items-center gap-4 lg:gap-8 ms-auto'>
+      {navLinks.map((link) => (
+        <a href={link.href} class="">{link.label}</a>
+      ))}
+    </div>
+    
+    <!-- Customizable Button -->
+    <Button href="tel:09123456789" style="px-4 py-2 ml-auto" label="Call Us"/>
+
+    <!-- Mobile Menu Button -->
+    <div id="mobile-menu-button" class="cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000" class="md:hidden">
+        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+      </svg>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <div class="flex flex-col items-start mt-4">
+      {navLinks.map((link) => (
+        <a href={link.href} class="py-2">{link.label}</a>
+      ))}
+    </div>
+  </div>
+</header>
+<!-- Navbar End -->
+
+<!-- JavaScript to Toggle Mobile Menu -->
+<script defer>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = mobileMenu.querySelectorAll('a');
+
+  // State variable to track if the menu is open
+  let isMenuOpen = false;
+
+  mobileMenuButton.addEventListener('click', () => {
+    // Toggle the visibility of the mobile menu
+    mobileMenu.classList.toggle('hidden');
+    
+    // Toggle the state
+    isMenuOpen = !isMenuOpen;
+
+    // Change the SVG based on the state
+    if (isMenuOpen) {
+      mobileMenuButton.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000" class="md:hidden">
+          <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+        </svg>
+      `;
+    } else {
+      mobileMenuButton.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000" class="md:hidden">
+          <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+        </svg>
+      `;
+    }
+  });
+
+  // Add click event listener to each mobile link
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      // Hide the mobile menu
+      mobileMenu.classList.add('hidden');
+      isMenuOpen = false; // Reset the state
+
+      // Change the SVG back to the closed state
+      mobileMenuButton.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000" class="md:hidden">
+          <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+      `;
+    });
+  });
+</script>

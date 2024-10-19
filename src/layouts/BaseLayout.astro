@@ -1,0 +1,55 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+---
+<html lang="en">
+	<head>
+    <!-- Primary Meta Tags -->
+    <title>Your Project Name | Professional Services</title>
+    <meta name="description" content="Provide a brief description of your services or offerings here.">
+    <meta name="keywords" content="relevant, keywords, go, here">
+    <meta name="author" content="Your Project Name">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Your Project Name | Professional Services">
+    <meta property="og:description" content="Brief description of your services or offerings for Open Graph.">
+    <meta property="og:url" content="https://www.yourprojectdomain.com">
+    <meta property="og:image" content="https://www.yourprojectdomain.com/images/your-og-image.jpg">
+    <meta property="og:site_name" content="Your Project Name">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your Project Name | Professional Services">
+    <meta name="twitter:description" content="Brief description of your services or offerings for Twitter.">
+    <meta name="twitter:image" content="https://www.yourprojectdomain.com/images/your-twitter-image.jpg">
+    <meta name="twitter:site" content="@your_twitter_handle">
+
+    <!-- Additional SEO Meta Tags -->
+    <link rel="canonical" href="https://www.yourprojectdomain.com">
+    <meta name="robots" content="index, follow">
+    <meta name="rating" content="general">
+
+    <!-- Schema.org for Google+ -->
+    <meta itemprop="name" content="Your Project Name | Professional Services">
+    <meta itemprop="description" content="Description of your services or offerings for Schema.">
+    <meta itemprop="image" content="https://www.yourprojectdomain.com/images/your-schema-image.jpg">
+
+    <!-- Favicon and Manifest -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="sitemap" href="/sitemap-index.xml" />
+	</head>
+	<body class="container mx-auto">
+		<Navbar />
+		<slot />
+        <Footer />
+	</body>
+</html>
