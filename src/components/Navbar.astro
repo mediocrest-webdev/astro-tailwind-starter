@@ -1,5 +1,5 @@
 ---
-import Button from "./Button.astro";
+// import Button from "./Button.astro";
 
 const navLinks = [
   { href: '#', label: 'Home' },
@@ -25,7 +25,7 @@ const navLinks = [
     </div>
     
     <!-- Customizable Button -->
-    <Button href="tel:09123456789" style="px-4 py-2 ml-auto" label="Call Us"/>
+    <!-- <Button href="tel:09123456789" style="px-4 py-2 ml-auto" label="Call Us"/> -->
 
     <!-- Mobile Menu Button -->
     <div id="mobile-menu-button" class="cursor-pointer">
@@ -47,7 +47,7 @@ const navLinks = [
 <!-- Navbar End -->
 
 <!-- JavaScript to Toggle Mobile Menu -->
-<script defer>
+<script>
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileLinks = mobileMenu.querySelectorAll('a');
