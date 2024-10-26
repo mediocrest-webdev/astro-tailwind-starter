@@ -21,16 +21,12 @@ export default {
         "5xl": "", 
       },
       spacing: {
-        0: "0", 
-        xs: "", 
-        sm: "", 
-        md: "", 
-        lg: "", 
-        xl: "", 
-        "2xl": "", 
-        "3xl": "",
-        "4xl": "",
-      },
+				'section-sm': '2rem',   // Small section spacing
+				'section-md': '4rem',   // Medium section spacing
+				'section-lg': '6rem',   // Large section spacing
+				'section-xl': '8rem',   // Extra-large section spacing
+				'section-xxl': '10rem', // Extra extra-large section spacing
+			},
       fontFamily: {
         light: ["-Light", "sans-serif"],
         regular: ["-Regular", "sans-serif"],
