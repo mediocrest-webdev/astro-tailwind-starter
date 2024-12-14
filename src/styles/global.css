@@ -3,13 +3,36 @@
 @tailwind utilities;
 
 /* Fonts */
+@font-face {
+    font-family: '-Regular';
+    src: url('/fonts/-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: '-Medium';
+    src: url('/fonts/-Medium.ttf') format('ttf');
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: '-Semibold';
+    src: url('/fonts/-Semibold.ttf') format('ttf');
+    font-weight: 600;
+    font-display: swap;
+    font-style: normal;
+  }
 
 /* Global styles */
 body {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    font-family: '', sans-serif;
+    font-family: '';
 }
 
 *, *:before, *:after {
@@ -18,10 +41,27 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
-    font-family: '', sans-serif;
 }
 
 p, li, figcaption {
     text-wrap: pretty;
     max-width: 60ch;
+}
+
+@layer base{
+    h1{
+        @apply
+    }
+
+    h2{
+        @apply
+    }
+
+    h3{
+        @apply
+    }
+
+    p{
+        @apply
+    }
 }
