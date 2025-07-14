@@ -2,66 +2,443 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fonts */
+/* ====================
+   🌐 Custom Fonts
+==================== */
 @font-face {
-    font-family: '-Regular';
-    src: url('/fonts/-Regular.ttf') format('ttf');
-    font-weight: 400;
-    font-display: swap;
-    font-style: normal;
-  }
+  font-family: 'CustomSans';
+  src: url('/fonts/YourFont-Regular.woff2') format('woff2'),
+       url('/fonts/YourFont-Regular.woff') format('woff'),
+       url('/fonts/YourFont-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
 
-  @font-face {
-    font-family: '-Medium';
-    src: url('/fonts/-Medium.ttf') format('ttf');
-    font-weight: 500;
-    font-display: swap;
-    font-style: normal;
-  }
+@font-face {
+  font-family: 'CustomSans';
+  src: url('/fonts/YourFont-Medium.woff2') format('woff2'),
+       url('/fonts/YourFont-Medium.woff') format('woff'),
+       url('/fonts/YourFont-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
 
-  @font-face {
-    font-family: '-Semibold';
-    src: url('/fonts/-Semibold.ttf') format('ttf');
-    font-weight: 600;
-    font-display: swap;
-    font-style: normal;
-  }
+@font-face {
+  font-family: 'CustomSans';
+  src: url('/fonts/YourFont-Semibold.woff2') format('woff2'),
+       url('/fonts/YourFont-Semibold.woff') format('woff'),
+       url('/fonts/YourFont-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
 
-/* Global styles */
+@font-face {
+  font-family: 'CustomSans';
+  src: url('/fonts/YourFont-Bold.woff2') format('woff2'),
+       url('/fonts/YourFont-Bold.woff') format('woff'),
+       url('/fonts/YourFont-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* ====================
+   🌐 CSS Custom Properties
+==================== */
+:root {
+  /* Colors - customize per project */
+  --color-primary: theme('colors.blue.600');
+  --color-primary-dark: theme('colors.blue.700');
+  --color-primary-light: theme('colors.blue.500');
+  --color-secondary: theme('colors.gray.600');
+  --color-accent: theme('colors.amber.500');
+  
+  /* Layout */
+  --max-width: 1200px;
+  --container-padding: 1rem;
+  --header-height: 4rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+  
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+}
+
+/* ====================
+   🌐 Global Styles
+==================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-    font-family: '';
+  @apply m-0 p-0 text-gray-900 bg-white antialiased;
+  font-family: 'CustomSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-*, *:before, *:after {
-    box-sizing: border-box;
+/* Remove default margins */
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+  margin: 0;
 }
 
+/* Remove list styles on ul, ol elements with a list role */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Improve text flow for readability */
 h1, h2, h3, h4, h5, h6 {
-    text-wrap: balance;
+  text-wrap: balance;
 }
 
 p, li, figcaption {
-    text-wrap: pretty;
-    max-width: 60ch;
+  text-wrap: pretty;
+  max-width: 65ch;
+  line-height: 1.75;
 }
 
-@layer base{
-    h1{
-        @apply
-    }
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
-    h2{
-        @apply
-    }
+/* ====================
+   📦 Base Typography Layer
+==================== */
+@layer base {
+  h1 {
+    @apply text-4xl font-semibold tracking-tight leading-tight text-gray-900 md:text-5xl lg:text-6xl;
+    margin-bottom: 1.5rem;
+  }
 
-    h3{
-        @apply
-    }
+  h2 {
+    @apply text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl lg:text-5xl;
+    margin-bottom: 1.25rem;
+  }
 
-    p{
-        @apply
-    }
+  h3 {
+    @apply text-2xl font-semibold text-gray-900 md:text-3xl lg:text-4xl;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    @apply text-xl font-semibold text-gray-900 md:text-2xl;
+    margin-bottom: 0.875rem;
+  }
+
+  h5 {
+    @apply text-lg font-semibold text-gray-900 md:text-xl;
+    margin-bottom: 0.75rem;
+  }
+
+  h6 {
+    @apply text-base font-semibold text-gray-900 md:text-lg;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    @apply text-base leading-relaxed text-gray-700 md:text-lg;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    @apply text-blue-600 underline underline-offset-2 hover:text-blue-700 focus:text-blue-700 transition-colors duration-200;
+  }
+
+  ul {
+    @apply list-disc pl-5 mb-4;
+  }
+
+  ol {
+    @apply list-decimal pl-5 mb-4;
+  }
+
+  li {
+    @apply mb-1;
+  }
+
+  img {
+    @apply max-w-full h-auto rounded-md;
+  }
+
+  blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4 bg-gray-50 py-2 rounded-r-md;
+  }
+
+  code {
+    @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono text-gray-800;
+  }
+
+  pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-4;
+  }
+
+  pre code {
+    @apply bg-transparent p-0 text-gray-100;
+  }
+
+  hr {
+    @apply border-gray-200 my-8;
+  }
+
+  table {
+    @apply w-full border-collapse border-spacing-0 my-4;
+  }
+
+  th {
+    @apply bg-gray-50 text-left p-3 font-semibold text-gray-900 border-b border-gray-200;
+  }
+
+  td {
+    @apply p-3 border-b border-gray-200;
+  }
+
+  .prose {
+    @apply max-w-none;
+  }
+}
+
+/* ====================
+   🎨 Utility Components
+==================== */
+@layer components {
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: var(--max-width);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md border border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+  }
+
+  .btn-outline {
+    @apply border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md border border-gray-200 p-6;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-sm {
+    @apply py-8 md:py-12;
+  }
+
+  .section-lg {
+    @apply py-24 md:py-32;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  .skip-link {
+    @apply absolute left-0 top-0 z-50 -translate-y-full transform bg-blue-600 px-4 py-2 text-white focus:translate-y-0 transition-transform;
+  }
+}
+
+/* ====================
+   🎬 Animations
+==================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====================
+   📱 Print Styles
+==================== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+}
+
+/* ====================
+   🌙 Dark Mode Support
+==================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: theme('colors.blue.400');
+    --color-primary-dark: theme('colors.blue.500');
+    --color-primary-light: theme('colors.blue.300');
+  }
+  
+  body {
+    @apply bg-gray-900 text-gray-100;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-100;
+  }
+  
+  p {
+    @apply text-gray-300;
+  }
+  
+  blockquote {
+    @apply border-gray-600 text-gray-400 bg-gray-800;
+  }
+  
+  code {
+    @apply bg-gray-800 text-gray-200;
+  }
+  
+  .card {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  th {
+    @apply bg-gray-800 text-gray-100 border-gray-600;
+  }
+  
+  td {
+    @apply border-gray-600;
+  }
+  
+  hr {
+    @apply border-gray-700;
+  }
 }
